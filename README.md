@@ -40,28 +40,30 @@ endpoints.json is a JSON object keyed by a human-friendly network name (and rela
 
 Example excerpt:
 
+```json
 {
-"Polkadot": {
-"providers": [
-"wss://rpc.polkadot.io",
-"wss://polkadot.api.onfinality.io/public-ws"
-],
-"isRelay": false
-},
-"Kusama": {
-"providers": [
-"wss://kusama-rpc.polkadot.io"
-],
-"isRelay": false
-},
-"Asset Hub - Polkadot": {
-"providers": [
-"wss://polkadot-asset-hub-rpc.polkadot.io"
-],
-"isRelay": true,
-"relay": "Polkadot"
+  "Polkadot": {
+    "providers": [
+      "wss://rpc.polkadot.io",
+      "wss://polkadot.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false
+  },
+  "Kusama": {
+    "providers": [
+      "wss://kusama-rpc.polkadot.io"
+    ],
+    "isRelay": false
+  },
+  "Asset Hub - Polkadot": {
+    "providers": [
+      "wss://polkadot-asset-hub-rpc.polkadot.io"
+    ],
+    "isRelay": true,
+    "relay": "Polkadot"
+  }
 }
-}
+```
 
 Notes:
 
