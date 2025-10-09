@@ -1,18 +1,464 @@
 [
   {
+    "name": "Polkadot Relay",
+    "providers": [
+      "wss://polkadot.dotters.network",
+      "wss://polkadot.api.onfinality.io/public-ws",
+      "wss://polkadot.public.curie.radiumblock.co/ws",
+      "wss://polkadot-public-rpc.blockops.network/ws",
+      "wss://polkadot-rpc-tn.dwellir.com",
+      "wss://polkadot-rpc.publicnode.com",
+      "wss://rpc.ibp.network/polkadot",
+      "wss://dot-rpc.stakeworld.io",
+      "wss://polkadot.rpc.permanence.io",
+      "wss://polkadot-rpc.n.dwellir.com",
+      "wss://rpc-polkadot.luckyfriday.io",
+      "wss://spectrum-03.simplystaking.xyz/cG9sa2Fkb3QtMDMtOTFkMmYwZGYtcG9sa2Fkb3Q/LjwBJpV3dIKyWQ/polkadot/mainnet/",
+      "wss://polkadot.rpc.subquery.network/public/ws",
+      "wss://rpc-polkadot.helixstreet.io"
+    ],
+    "isRelay": true,
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Acala",
+    "providers": [
+      "wss://acala.dotters.network",
+      "wss://acala-rpc-0.aca-api.network",
+      "wss://acala.ibp.network",
+      "wss://acala-rpc.n.dwellir.com",
+      "wss://acala-rpc-1.aca-api.network",
+      "wss://acala-rpc-3.aca-api.network/ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Ajuna Network",
+    "providers": [
+      "wss://ajuna.dotters.network",
+      "wss://ajuna.ibp.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Asset Hub",
+    "providers": [
+      "wss://asset-hub-polkadot.dotters.network",
+      "wss://polkadot-asset-hub-rpc.polkadot.io",
+      "wss://statemint-rpc-tn.dwellir.com",
+      "wss://sys.ibp.network/asset-hub-polkadot",
+      "wss://dot-rpc.stakeworld.io/assethub",
+      "wss://statemint.public.curie.radiumblock.co/ws",
+      "wss://asset-hub-polkadot-rpc.n.dwellir.com",
+      "wss://rpc-asset-hub-polkadot.luckyfriday.io",
+      "wss://statemint.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Astar",
+    "providers": [
+      "wss://rpc.astar.network",
+      "wss://astar-rpc.n.dwellir.com",
+      "wss://astar.api.onfinality.io/public-ws",
+      "wss://astar.public.curie.radiumblock.co/ws",
+      "wss://astar.public.blastapi.io"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Aventus",
+    "providers": [
+      "wss://public-rpc.mainnet.aventus.io"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Bifrost",
+    "providers": [
+      "wss://bifrost-polkadot.dotters.network",
+      "wss://eu.bifrost-polkadot-rpc.liebi.com/ws",
+      "wss://bifrost-polkadot.ibp.network",
+      "wss://hk.p.bifrost-rpc.liebi.com/ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Bridge Hub",
+    "providers": [
+      "wss://bridge-hub-polkadot.dotters.network",
+      "wss://polkadot-bridge-hub-rpc.polkadot.io",
+      "wss://polkadot-bridge-hub-rpc-tn.dwellir.com",
+      "wss://sys.ibp.network/bridgehub-polkadot",
+      "wss://dot-rpc.stakeworld.io/bridgehub",
+      "wss://bridgehub-polkadot.public.curie.radiumblock.co/ws",
+      "wss://bridge-hub-polkadot-rpc.n.dwellir.com",
+      "wss://rpc-bridge-hub-polkadot.luckyfriday.io",
+      "wss://bridgehub-polkadot.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Centrifuge",
+    "providers": [
+      "wss://rpc-centrifuge.luckyfriday.io",
+      "wss://centrifuge-parachain.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Collectives",
+    "providers": [
+      "wss://collectives-polkadot.dotters.network",
+      "wss://polkadot-collectives-rpc.polkadot.io",
+      "wss://polkadot-collectives-rpc-tn.dwellir.com",
+      "wss://sys.ibp.network/collectives-polkadot",
+      "wss://dot-rpc.stakeworld.io/collectives",
+      "wss://collectives.public.curie.radiumblock.co/ws",
+      "wss://collectives-polkadot-rpc.n.dwellir.com",
+      "wss://rpc-collectives-polkadot.luckyfriday.io",
+      "wss://collectives.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Coretime",
+    "providers": [
+      "wss://coretime-polkadot.dotters.network",
+      "wss://polkadot-coretime-rpc.polkadot.io",
+      "wss://dot-rpc.stakeworld.io/coretime",
+      "wss://sys.ibp.network/coretime-polkadot",
+      "wss://coretime-polkadot-rpc.n.dwellir.com",
+      "wss://rpc-coretime-polkadot.luckyfriday.io",
+      "wss://coretime-polkadot.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Crust",
+    "providers": [
+      "wss://crust-parachain.crustnetwork.cc",
+      "wss://crust-parachain.crustapps.net",
+      "wss://crust-parachain.crustnetwork.xyz"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Darwinia",
+    "providers": [
+      "wss://darwinia.rpc.subquery.network/public/ws",
+      "wss://darwinia-rpc.n.dwellir.com",
+      "wss://rpc.darwinia.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Energy Web X",
+    "providers": [
+      "wss://public-rpc.mainnet.energywebx.com/"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Frequency",
+    "providers": [
+      "wss://1.rpc.frequency.xyz",
+      "wss://frequency-polkadot.api.onfinality.io/public-ws",
+      "wss://0.rpc.frequency.xyz"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Heima",
+    "providers": [
+      "wss://rpc.heima-parachain.heima.network",
+      "wss://heima-rpc.n.dwellir.com"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Hydration",
+    "providers": [
+      "wss://hydration.dotters.network",
+      "wss://hydration-rpc.n.dwellir.com",
+      "wss://hydration.ibp.network",
+      "wss://rpc.hydradx.cloud",
+      "wss://rpc.helikon.io/hydradx"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Hyperbridge (Nexus)",
+    "providers": [
+      "wss://hyperbridge-nexus-rpc.blockops.network",
+      "wss://nexus.ibp.network",
+      "wss://nexus.dotters.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Integritee Network",
+    "providers": [
+      "wss://polkadot.api.integritee.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Interlay",
+    "providers": [
+      "wss://api.interlay.io/parachain",
+      "wss://rpc-interlay.luckyfriday.io/"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | JAMTON",
+    "providers": [
+      "wss://rpc.jamton.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | KILT Spiritnet",
+    "providers": [
+      "wss://kilt.dotters.network",
+      "wss://spiritnet.kilt.io/",
+      "wss://kilt.ibp.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Laos",
+    "providers": [
+      "wss://rpc.laos.laosfoundation.io"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Manta",
+    "providers": [
+      "wss://ws.manta.systems"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Moonbeam",
+    "providers": [
+      "wss://moonbeam.dotters.network",
+      "wss://moonbeam.public.curie.radiumblock.co/ws",
+      "wss://moonbeam.api.onfinality.io/public-ws",
+      "wss://wss.api.moonbeam.network",
+      "wss://moonbeam-rpc.publicnode.com",
+      "wss://moonbeam.unitedbloc.com",
+      "wss://moonbeam.ibp.network",
+      "wss://moonbeam-rpc.n.dwellir.com",
+      "wss://moonbeam.public.blastapi.io"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Mythos",
+    "providers": [
+      "wss://mythos.dotters.network",
+      "wss://polkadot-mythos-rpc.polkadot.io",
+      "wss://mythos.ibp.network",
+      "wss://rpc.helikon.io/mythos"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | NeuroWeb",
+    "providers": [
+      "wss://parachain-rpc.origin-trail.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Nodle",
+    "providers": [
+      "wss://nodle-parachain.api.onfinality.io/public-ws",
+      "wss://nodle-rpc.dwellir.com"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Pendulum",
+    "providers": [
+      "wss://rpc-pendulum.prd.pendulumchain.tech"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | People",
+    "providers": [
+      "wss://people-polkadot.dotters.network",
+      "wss://dot-rpc.stakeworld.io/people",
+      "wss://polkadot-people-rpc.polkadot.io",
+      "wss://sys.ibp.network/people-polkadot",
+      "wss://people-polkadot-rpc.n.dwellir.com",
+      "wss://rpc-people-polkadot.luckyfriday.io",
+      "wss://people-polkadot.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Phala Network",
+    "providers": [
+      "wss://phala.public.curie.radiumblock.co/ws",
+      "wss://rpc.helikon.io/phala",
+      "wss://phala-rpc.n.dwellir.com",
+      "wss://phala.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Polimec",
+    "providers": [
+      "wss://rpc.polimec.org",
+      "wss://polimec.ibp.network",
+      "wss://polimec.dotters.network",
+      "wss://polimec.rpc.amforc.com"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Robonomics",
+    "providers": [
+      "wss://polkadot.rpc.robonomics.network/"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | SORA",
+    "providers": [
+      "wss://ws.parachain-collator-3.pc3.sora2.soramitsu.co.jp"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Unique Network",
+    "providers": [
+      "wss://unique.dotters.network",
+      "wss://ws.unique.network",
+      "wss://eu-ws.unique.network",
+      "wss://unique.ibp.network",
+      "wss://us-ws.unique.network",
+      "wss://asia-ws.unique.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Xcavate",
+    "providers": [
+      "wss://xcavate.dotters.network",
+      "wss://rpc1-polkadot.xcavate.io",
+      "wss://xcavate.ibp.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Xode",
+    "providers": [
+      "wss://xode-polkadot-rpc-01.zeeve.net/y0yxg038wn1fncc/rpc",
+      "wss://polkadot-rpcnode.xode.net"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Zeitgeist",
+    "providers": [
+      "wss://zeitgeist.api.onfinality.io/public-ws"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
     "name": "Kusama Relay",
     "providers": [
-      "wss://kusama-rpc.publicnode.com",
-      "wss://kusama-public-rpc.blockops.network/ws",
-      "wss://kusama-rpc.n.dwellir.com",
-      "wss://kusama-rpc-tn.dwellir.com",
-      "wss://rpc-kusama.helixstreet.io",
-      "wss://rpc.ibp.network/kusama",
       "wss://kusama.dotters.network",
-      "wss://rpc-kusama.luckyfriday.io",
       "wss://kusama.api.onfinality.io/public-ws",
+      "wss://kusama-public-rpc.blockops.network/ws",
+      "wss://kusama-rpc.publicnode.com",
+      "wss://kusama-rpc-tn.dwellir.com",
       "wss://kusama.public.curie.radiumblock.co/ws",
-      "wss://ksm-rpc.stakeworld.io"
+      "wss://ksm-rpc.stakeworld.io",
+      "wss://rpc.ibp.network/kusama",
+      "wss://kusama-rpc.n.dwellir.com",
+      "wss://rpc-kusama.luckyfriday.io",
+      "wss://rpc-kusama.helixstreet.io"
     ],
     "isRelay": true,
     "supportsContracts": false
@@ -47,15 +493,14 @@
   {
     "name": "Kusama Relay | Asset Hub",
     "providers": [
-      "wss://asset-hub-kusama-rpc.n.dwellir.com",
-      "wss://statemine-rpc-tn.dwellir.com",
-      "wss://sys.ibp.network/asset-hub-kusama",
       "wss://asset-hub-kusama.dotters.network",
+      "wss://statemine-rpc-tn.dwellir.com",
+      "wss://ksm-rpc.stakeworld.io/assethub",
+      "wss://sys.ibp.network/asset-hub-kusama",
+      "wss://asset-hub-kusama-rpc.n.dwellir.com",
       "wss://rpc-asset-hub-kusama.luckyfriday.io",
-      "wss://assethub-kusama.api.onfinality.io/public-ws",
-      "wss://kusama-asset-hub-rpc.polkadot.io",
       "wss://statemine.public.curie.radiumblock.co/ws",
-      "wss://ksm-rpc.stakeworld.io/assethub"
+      "wss://assethub-kusama.api.onfinality.io/public-ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -74,8 +519,8 @@
   {
     "name": "Kusama Relay | Bifrost",
     "providers": [
-      "wss://bifrost-rpc.liebi.com/ws",
-      "wss://us.bifrost-rpc.liebi.com/ws"
+      "wss://us.bifrost-rpc.liebi.com/ws",
+      "wss://bifrost-rpc.liebi.com/ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -84,15 +529,15 @@
   {
     "name": "Kusama Relay | Bridge Hub",
     "providers": [
-      "wss://bridge-hub-kusama-rpc.n.dwellir.com",
-      "wss://kusama-bridge-hub-rpc-tn.dwellir.com",
-      "wss://sys.ibp.network/bridgehub-kusama",
       "wss://bridge-hub-kusama.dotters.network",
-      "wss://rpc-bridge-hub-kusama.luckyfriday.io",
-      "wss://bridgehub-kusama.api.onfinality.io/public-ws",
       "wss://kusama-bridge-hub-rpc.polkadot.io",
+      "wss://kusama-bridge-hub-rpc-tn.dwellir.com",
+      "wss://ksm-rpc.stakeworld.io/bridgehub",
+      "wss://sys.ibp.network/bridgehub-kusama",
+      "wss://bridge-hub-kusama-rpc.n.dwellir.com",
+      "wss://rpc-bridge-hub-kusama.luckyfriday.io",
       "wss://bridgehub-kusama.public.curie.radiumblock.co/ws",
-      "wss://ksm-rpc.stakeworld.io/bridgehub"
+      "wss://bridgehub-kusama.api.onfinality.io/public-ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -101,13 +546,13 @@
   {
     "name": "Kusama Relay | Coretime",
     "providers": [
-      "wss://coretime-kusama-rpc.n.dwellir.com",
-      "wss://sys.ibp.network/coretime-kusama",
       "wss://coretime-kusama.dotters.network",
-      "wss://rpc-coretime-kusama.luckyfriday.io",
-      "wss://coretime-kusama.api.onfinality.io/public-ws",
       "wss://kusama-coretime-rpc.polkadot.io",
-      "wss://ksm-rpc.stakeworld.io/coretime"
+      "wss://ksm-rpc.stakeworld.io/coretime",
+      "wss://sys.ibp.network/coretime-kusama",
+      "wss://coretime-kusama-rpc.n.dwellir.com",
+      "wss://rpc-coretime-kusama.luckyfriday.io",
+      "wss://coretime-kusama.api.onfinality.io/public-ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -116,8 +561,8 @@
   {
     "name": "Kusama Relay | Crab",
     "providers": [
-      "wss://crab-rpc.darwinia.network/",
-      "wss://darwiniacrab-rpc.n.dwellir.com"
+      "wss://darwiniacrab-rpc.n.dwellir.com",
+      "wss://crab-rpc.darwinia.network/"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -126,10 +571,9 @@
   {
     "name": "Kusama Relay | Crust Shadow",
     "providers": [
-      "wss://rpc-shadow.crust.network/",
-      "wss://rpc-shadow.crustnetwork.app",
+      "wss://rpc-shadow.crustnetwork.xyz",
       "wss://rpc-shadow.crustnetwork.cc",
-      "wss://rpc-shadow.crustnetwork.xyz"
+      "wss://rpc-shadow.crust.network/"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -147,10 +591,10 @@
   {
     "name": "Kusama Relay | Encointer Network",
     "providers": [
-      "wss://encointer-kusama-rpc.n.dwellir.com",
+      "wss://encointer-kusama.dotters.network",
       "wss://kusama.api.encointer.org",
       "wss://sys.ibp.network/encointer-kusama",
-      "wss://encointer-kusama.dotters.network",
+      "wss://encointer-kusama-rpc.n.dwellir.com",
       "wss://rpc-encointer-kusama.luckyfriday.io"
     ],
     "isRelay": false,
@@ -179,11 +623,11 @@
   {
     "name": "Kusama Relay | Karura",
     "providers": [
-      "wss://karura-rpc-0.aca-api.network",
+      "wss://karura-rpc.n.dwellir.com",
       "wss://karura-rpc-1.aca-api.network",
+      "wss://karura-rpc-0.aca-api.network",
       "wss://karura-rpc-2.aca-api.network/ws",
-      "wss://karura-rpc-3.aca-api.network/ws",
-      "wss://karura-rpc.n.dwellir.com"
+      "wss://karura-rpc-3.aca-api.network/ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -194,15 +638,6 @@
     "providers": [
       "wss://api-kusama.interlay.io/parachain",
       "wss://kintsugi.api.onfinality.io/public-ws"
-    ],
-    "isRelay": false,
-    "relay": "Kusama Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Kusama Relay | Kpron",
-    "providers": [
-      "wss://kusama-kpron-rpc.apron.network/"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -220,8 +655,8 @@
   {
     "name": "Kusama Relay | Krest",
     "providers": [
-      "wss://wss-krest.peaq.network/",
-      "wss://krest.api.onfinality.io/public-ws"
+      "wss://krest.api.onfinality.io/public-ws",
+      "wss://wss-krest.peaq.network/"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -230,12 +665,12 @@
   {
     "name": "Kusama Relay | Moonriver",
     "providers": [
-      "wss://moonriver-rpc.publicnode.com",
-      "wss://moonriver-rpc.n.dwellir.com",
       "wss://wss.api.moonriver.moonbeam.network",
-      "wss://moonriver.api.onfinality.io/public-ws",
+      "wss://moonriver-rpc.publicnode.com",
+      "wss://moonriver.unitedbloc.com",
       "wss://moonriver.public.curie.radiumblock.co/ws",
-      "wss://moonriver.unitedbloc.com"
+      "wss://moonriver-rpc.n.dwellir.com",
+      "wss://moonriver.api.onfinality.io/public-ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -244,14 +679,14 @@
   {
     "name": "Kusama Relay | People",
     "providers": [
-      "wss://people-kusama-rpc.n.dwellir.com",
-      "wss://rpc-people-kusama.helixstreet.io",
-      "wss://sys.ibp.network/people-kusama",
       "wss://people-kusama.dotters.network",
-      "wss://rpc-people-kusama.luckyfriday.io",
-      "wss://people-kusama.api.onfinality.io/public-ws",
       "wss://kusama-people-rpc.polkadot.io",
-      "wss://ksm-rpc.stakeworld.io/people"
+      "wss://ksm-rpc.stakeworld.io/people",
+      "wss://sys.ibp.network/people-kusama",
+      "wss://people-kusama-rpc.n.dwellir.com",
+      "wss://rpc-people-kusama.luckyfriday.io",
+      "wss://rpc-people-kusama.helixstreet.io",
+      "wss://people-kusama.api.onfinality.io/public-ws"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -304,21 +739,12 @@
     "supportsContracts": false
   },
   {
-    "name": "Kusama Relay | Sakura",
-    "providers": [
-      "wss://api-sakura.clover.finance"
-    ],
-    "isRelay": false,
-    "relay": "Kusama Relay",
-    "supportsContracts": false
-  },
-  {
     "name": "Kusama Relay | Shiden",
     "providers": [
-      "wss://rpc.shiden.astar.network",
+      "wss://shiden.public.curie.radiumblock.co/ws",
       "wss://shiden-rpc.n.dwellir.com",
       "wss://shiden.api.onfinality.io/public-ws",
-      "wss://shiden.public.curie.radiumblock.co/ws"
+      "wss://rpc.shiden.astar.network"
     ],
     "isRelay": false,
     "relay": "Kusama Relay",
@@ -354,11 +780,11 @@
   {
     "name": "Paseo Relay",
     "providers": [
+      "wss://pas-rpc.stakeworld.io",
       "wss://paseo.rpc.amforc.com",
-      "wss://paseo-rpc.n.dwellir.com",
       "wss://rpc.ibp.network/paseo",
       "wss://paseo.dotters.network",
-      "wss://pas-rpc.stakeworld.io"
+      "wss://paseo-rpc.n.dwellir.com"
     ],
     "isRelay": true,
     "supportsContracts": false
@@ -375,11 +801,11 @@
   {
     "name": "Paseo Relay | Asset Hub",
     "providers": [
-      "wss://asset-hub-paseo-rpc.n.dwellir.com",
-      "wss://sys.ibp.network/asset-hub-paseo",
+      "wss://sys.turboflakes.io/asset-hub-paseo",
       "wss://asset-hub-paseo.dotters.network",
       "wss://pas-rpc.stakeworld.io/assethub",
-      "wss://sys.turboflakes.io/asset-hub-paseo"
+      "wss://sys.ibp.network/asset-hub-paseo",
+      "wss://asset-hub-paseo-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "relay": "Paseo Relay",
@@ -388,8 +814,8 @@
   {
     "name": "Paseo Relay | Bridge Hub",
     "providers": [
-      "wss://sys.ibp.network/bridgehub-paseo",
-      "wss://bridge-hub-paseo.dotters.network"
+      "wss://bridge-hub-paseo.dotters.network",
+      "wss://sys.ibp.network/bridgehub-paseo"
     ],
     "isRelay": false,
     "relay": "Paseo Relay",
@@ -398,8 +824,8 @@
   {
     "name": "Paseo Relay | Coretime",
     "providers": [
-      "wss://sys.ibp.network/coretime-paseo",
-      "wss://coretime-paseo.dotters.network"
+      "wss://coretime-paseo.dotters.network",
+      "wss://sys.ibp.network/coretime-paseo"
     ],
     "isRelay": false,
     "relay": "Paseo Relay",
@@ -507,8 +933,8 @@
   {
     "name": "Paseo Relay | Mandala",
     "providers": [
-      "wss://rpc1.paseo.mandalachain.io",
-      "wss://rpc2.paseo.mandalachain.io"
+      "wss://rpc2.paseo.mandalachain.io",
+      "wss://rpc1.paseo.mandalachain.io"
     ],
     "isRelay": false,
     "relay": "Paseo Relay",
@@ -555,9 +981,9 @@
   {
     "name": "Paseo Relay | People",
     "providers": [
-      "wss://people-paseo.rpc.amforc.com",
+      "wss://people-paseo.dotters.network",
       "wss://sys.ibp.network/people-paseo",
-      "wss://people-paseo.dotters.network"
+      "wss://people-paseo.rpc.amforc.com"
     ],
     "isRelay": false,
     "relay": "Paseo Relay",
@@ -600,507 +1026,13 @@
     "supportsContracts": false
   },
   {
-    "name": "Polkadot Relay",
-    "providers": [
-      "wss://polkadot-rpc.publicnode.com",
-      "wss://polkadot-public-rpc.blockops.network/ws",
-      "wss://polkadot-rpc.n.dwellir.com",
-      "wss://polkadot-rpc-tn.dwellir.com",
-      "wss://rpc-polkadot.helixstreet.io",
-      "wss://rpc.ibp.network/polkadot",
-      "wss://polkadot.dotters.network",
-      "wss://rpc-polkadot.luckyfriday.io",
-      "wss://polkadot.api.onfinality.io/public-ws",
-      "wss://polkadot.rpc.permanence.io",
-      "wss://polkadot.public.curie.radiumblock.co/ws",
-      "wss://spectrum-03.simplystaking.xyz/cG9sa2Fkb3QtMDMtOTFkMmYwZGYtcG9sa2Fkb3Q/LjwBJpV3dIKyWQ/polkadot/mainnet/",
-      "wss://dot-rpc.stakeworld.io",
-      "wss://polkadot.rpc.subquery.network/public/ws"
-    ],
-    "isRelay": true,
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Acala",
-    "providers": [
-      "wss://acala-rpc-0.aca-api.network",
-      "wss://acala-rpc-1.aca-api.network",
-      "wss://acala-rpc-3.aca-api.network/ws",
-      "wss://acala-rpc.n.dwellir.com",
-      "wss://acala.ibp.network",
-      "wss://acala.dotters.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Ajuna Network",
-    "providers": [
-      "wss://rpc-para.ajuna.network",
-      "wss://ajuna.ibp.network",
-      "wss://ajuna.dotters.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Asset Hub",
-    "providers": [
-      "wss://asset-hub-polkadot-rpc.n.dwellir.com",
-      "wss://statemint-rpc-tn.dwellir.com",
-      "wss://sys.ibp.network/asset-hub-polkadot",
-      "wss://asset-hub-polkadot.dotters.network",
-      "wss://rpc-asset-hub-polkadot.luckyfriday.io",
-      "wss://statemint.api.onfinality.io/public-ws",
-      "wss://polkadot-asset-hub-rpc.polkadot.io",
-      "wss://statemint.public.curie.radiumblock.co/ws",
-      "wss://dot-rpc.stakeworld.io/assethub"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Astar",
-    "providers": [
-      "wss://rpc.astar.network",
-      "wss://astar.public.blastapi.io",
-      "wss://astar-rpc.n.dwellir.com",
-      "wss://astar.api.onfinality.io/public-ws",
-      "wss://astar.public.curie.radiumblock.co/ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Aventus",
-    "providers": [
-      "wss://public-rpc.mainnet.aventus.io"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Bifrost",
-    "providers": [
-      "wss://bifrost-polkadot.ibp.network",
-      "wss://bifrost-polkadot.dotters.network",
-      "wss://hk.p.bifrost-rpc.liebi.com/ws",
-      "wss://eu.bifrost-polkadot-rpc.liebi.com/ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Bridge Hub",
-    "providers": [
-      "wss://bridge-hub-polkadot-rpc.n.dwellir.com",
-      "wss://polkadot-bridge-hub-rpc-tn.dwellir.com",
-      "wss://sys.ibp.network/bridgehub-polkadot",
-      "wss://bridge-hub-polkadot.dotters.network",
-      "wss://rpc-bridge-hub-polkadot.luckyfriday.io",
-      "wss://bridgehub-polkadot.api.onfinality.io/public-ws",
-      "wss://polkadot-bridge-hub-rpc.polkadot.io",
-      "wss://bridgehub-polkadot.public.curie.radiumblock.co/ws",
-      "wss://dot-rpc.stakeworld.io/bridgehub"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Centrifuge",
-    "providers": [
-      "wss://rpc-centrifuge.luckyfriday.io",
-      "wss://centrifuge-parachain.api.onfinality.io/public-ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Collectives",
-    "providers": [
-      "wss://collectives-polkadot-rpc.n.dwellir.com",
-      "wss://polkadot-collectives-rpc-tn.dwellir.com",
-      "wss://sys.ibp.network/collectives-polkadot",
-      "wss://collectives-polkadot.dotters.network",
-      "wss://rpc-collectives-polkadot.luckyfriday.io",
-      "wss://collectives.api.onfinality.io/public-ws",
-      "wss://polkadot-collectives-rpc.polkadot.io",
-      "wss://collectives.public.curie.radiumblock.co/ws",
-      "wss://dot-rpc.stakeworld.io/collectives"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Coretime",
-    "providers": [
-      "wss://coretime-polkadot-rpc.n.dwellir.com",
-      "wss://sys.ibp.network/coretime-polkadot",
-      "wss://coretime-polkadot.dotters.network",
-      "wss://rpc-coretime-polkadot.luckyfriday.io",
-      "wss://coretime-polkadot.api.onfinality.io/public-ws",
-      "wss://polkadot-coretime-rpc.polkadot.io",
-      "wss://dot-rpc.stakeworld.io/coretime"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Crust",
-    "providers": [
-      "wss://crust-parachain.crustapps.net",
-      "wss://crust-parachain.crustnetwork.app",
-      "wss://crust-parachain.crustnetwork.cc",
-      "wss://crust-parachain.crustnetwork.xyz"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Darwinia",
-    "providers": [
-      "wss://rpc.darwinia.network",
-      "wss://darwinia-rpc.n.dwellir.com",
-      "wss://darwinia.rpc.subquery.network/public/ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Energy Web X",
-    "providers": [
-      "wss://public-rpc.mainnet.energywebx.com/"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Frequency",
-    "providers": [
-      "wss://0.rpc.frequency.xyz",
-      "wss://1.rpc.frequency.xyz",
-      "wss://frequency-polkadot.api.onfinality.io/public-ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Geminis",
-    "providers": [
-      "wss://rpc.geminis.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Heima",
-    "providers": [
-      "wss://heima-rpc.n.dwellir.com",
-      "wss://rpc.heima-parachain.heima.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Hydration",
-    "providers": [
-      "wss://hydration-rpc.n.dwellir.com",
-      "wss://rpc.hydradx.cloud",
-      "wss://rpc.helikon.io/hydradx",
-      "wss://hydration.ibp.network",
-      "wss://hydration.dotters.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Hyperbridge (Nexus)",
-    "providers": [
-      "wss://hyperbridge-nexus-rpc.blockops.network",
-      "wss://nexus.ibp.network",
-      "wss://nexus.dotters.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Integritee Network",
-    "providers": [
-      "wss://polkadot.api.integritee.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Interlay",
-    "providers": [
-      "wss://api.interlay.io/parachain",
-      "wss://rpc-interlay.luckyfriday.io/"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | JAMTON",
-    "providers": [
-      "wss://rpc.jamton.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | KILT Spiritnet",
-    "providers": [
-      "wss://kilt.ibp.network",
-      "wss://kilt.dotters.network",
-      "wss://spiritnet.kilt.io/"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Laos",
-    "providers": [
-      "wss://rpc.laos.laosfoundation.io"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Logion",
-    "providers": [
-      "wss://para-rpc01.logion.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Manta",
-    "providers": [
-      "wss://ws.manta.systems"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Moonbeam",
-    "providers": [
-      "wss://moonbeam-rpc.publicnode.com",
-      "wss://moonbeam.public.blastapi.io",
-      "wss://moonbeam-rpc.n.dwellir.com",
-      "wss://moonbeam.ibp.network",
-      "wss://moonbeam.dotters.network",
-      "wss://wss.api.moonbeam.network",
-      "wss://moonbeam.api.onfinality.io/public-ws",
-      "wss://moonbeam.public.curie.radiumblock.co/ws",
-      "wss://moonbeam.unitedbloc.com"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Mythos",
-    "providers": [
-      "wss://rpc.helikon.io/mythos",
-      "wss://mythos.ibp.network",
-      "wss://mythos.dotters.network",
-      "wss://polkadot-mythos-rpc.polkadot.io"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | NeuroWeb",
-    "providers": [
-      "wss://parachain-rpc.origin-trail.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Nodle",
-    "providers": [
-      "wss://nodle-rpc.dwellir.com",
-      "wss://nodle-parachain.api.onfinality.io/public-ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | OAK Network",
-    "providers": [
-      "wss://rpc.oak.tech"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | OmniBTC",
-    "providers": [
-      "wss://psc-parachain.coming.chat"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Pendulum",
-    "providers": [
-      "wss://rpc-pendulum.prd.pendulumchain.tech"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | People",
-    "providers": [
-      "wss://people-polkadot-rpc.n.dwellir.com",
-      "wss://sys.ibp.network/people-polkadot",
-      "wss://people-polkadot.dotters.network",
-      "wss://rpc-people-polkadot.luckyfriday.io",
-      "wss://people-polkadot.api.onfinality.io/public-ws",
-      "wss://polkadot-people-rpc.polkadot.io",
-      "wss://dot-rpc.stakeworld.io/people"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Phala Network",
-    "providers": [
-      "wss://phala-rpc.n.dwellir.com",
-      "wss://rpc.helikon.io/phala",
-      "wss://phala.api.onfinality.io/public-ws",
-      "wss://phala.public.curie.radiumblock.co/ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Polimec",
-    "providers": [
-      "wss://polimec.rpc.amforc.com",
-      "wss://rpc.helikon.io/polimec",
-      "wss://polimec.ibp.network",
-      "wss://polimec.dotters.network",
-      "wss://rpc.polimec.org"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Robonomics",
-    "providers": [
-      "wss://polkadot.rpc.robonomics.network/"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | SORA",
-    "providers": [
-      "wss://ws.parachain-collator-3.pc3.sora2.soramitsu.co.jp"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | SubDAO",
-    "providers": [
-      "wss://parachain-rpc.subdao.org"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Unique Network",
-    "providers": [
-      "wss://ws.unique.network",
-      "wss://unique.ibp.network",
-      "wss://unique.dotters.network",
-      "wss://us-ws.unique.network",
-      "wss://asia-ws.unique.network",
-      "wss://eu-ws.unique.network"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Xcavate",
-    "providers": [
-      "wss://xcavate.ibp.network",
-      "wss://xcavate.dotters.network",
-      "wss://rpc1-polkadot.xcavate.io"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Xode",
-    "providers": [
-      "wss://polkadot-rpcnode.xode.net",
-      "wss://xode-polkadot-rpc-01.zeeve.net/y0yxg038wn1fncc/rpc"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | Zeitgeist",
-    "providers": [
-      "wss://zeitgeist.api.onfinality.io/public-ws"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
     "name": "Westend Relay",
     "providers": [
-      "wss://westend-rpc.n.dwellir.com",
       "wss://westend-rpc-tn.dwellir.com",
-      "wss://westend.api.onfinality.io/public-ws",
       "wss://westend-rpc.polkadot.io",
-      "wss://westend.public.curie.radiumblock.co/ws"
+      "wss://westend.public.curie.radiumblock.co/ws",
+      "wss://westend-rpc.n.dwellir.com",
+      "wss://westend.api.onfinality.io/public-ws"
     ],
     "isRelay": true,
     "supportsContracts": false
@@ -1108,10 +1040,10 @@
   {
     "name": "Westend Relay | Asset Hub",
     "providers": [
-      "wss://asset-hub-westend-rpc.n.dwellir.com",
-      "wss://westmint-rpc-tn.dwellir.com",
       "wss://westend-asset-hub-rpc.polkadot.io",
-      "wss://asset-hub-westend.rpc.permanence.io"
+      "wss://westmint-rpc-tn.dwellir.com",
+      "wss://asset-hub-westend.rpc.permanence.io",
+      "wss://asset-hub-westend-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "relay": "Westend Relay",
@@ -1120,9 +1052,9 @@
   {
     "name": "Westend Relay | Bridge Hub",
     "providers": [
-      "wss://bridge-hub-westend-rpc.n.dwellir.com",
+      "wss://westend-bridge-hub-rpc.polkadot.io",
       "wss://westend-bridge-hub-rpc-tn.dwellir.com",
-      "wss://westend-bridge-hub-rpc.polkadot.io"
+      "wss://bridge-hub-westend-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "relay": "Westend Relay",
@@ -1131,9 +1063,9 @@
   {
     "name": "Westend Relay | Collectives",
     "providers": [
-      "wss://collectives-westend-rpc.n.dwellir.com",
+      "wss://westend-collectives-rpc.polkadot.io",
       "wss://westend-collectives-rpc-tn.dwellir.com",
-      "wss://westend-collectives-rpc.polkadot.io"
+      "wss://collectives-westend-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "relay": "Westend Relay",
@@ -1142,8 +1074,8 @@
   {
     "name": "Westend Relay | Coretime",
     "providers": [
-      "wss://coretime-westend-rpc.n.dwellir.com",
-      "wss://westend-coretime-rpc.polkadot.io"
+      "wss://westend-coretime-rpc.polkadot.io",
+      "wss://coretime-westend-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "relay": "Westend Relay",
@@ -1161,8 +1093,8 @@
   {
     "name": "Westend Relay | People",
     "providers": [
-      "wss://people-westend-rpc.n.dwellir.com",
-      "wss://westend-people-rpc.polkadot.io"
+      "wss://westend-people-rpc.polkadot.io",
+      "wss://people-westend-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "relay": "Westend Relay",
@@ -1213,16 +1145,8 @@
   {
     "name": "Aleph Zero",
     "providers": [
-      "wss://ws.azero.dev",
-      "wss://aleph-zero.api.onfinality.io/public-ws"
-    ],
-    "isRelay": false,
-    "supportsContracts": false
-  },
-  {
-    "name": "Aleph Zero Testnet",
-    "providers": [
-      "wss://ws.test.azero.dev"
+      "wss://aleph-zero.api.onfinality.io/public-ws",
+      "wss://ws.azero.dev"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1254,8 +1178,8 @@
   {
     "name": "Autonomys",
     "providers": [
-      "wss://rpc.mainnet.subspace.foundation/ws",
-      "wss://rpc-0.mainnet.autonomys.xyz/ws"
+      "wss://rpc-0.mainnet.autonomys.xyz/ws",
+      "wss://rpc.mainnet.subspace.foundation/ws"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1305,9 +1229,9 @@
   {
     "name": "Bittensor",
     "providers": [
-      "wss://lite.sub.latent.to:443",
+      "wss://entrypoint-finney.opentensor.ai:443",
       "wss://bittensor-finney.api.onfinality.io/public-ws",
-      "wss://entrypoint-finney.opentensor.ai:443"
+      "wss://lite.sub.latent.to:443"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1387,11 +1311,10 @@
   {
     "name": "Crust Network",
     "providers": [
+      "wss://crust.api.onfinality.io/public-ws",
       "wss://rpc.crust.network",
-      "wss://rpc.crustnetwork.app",
-      "wss://rpc.crustnetwork.cc",
       "wss://rpc.crustnetwork.xyz",
-      "wss://crust.api.onfinality.io/public-ws"
+      "wss://rpc.crustnetwork.cc"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1431,8 +1354,8 @@
   {
     "name": "Joystream",
     "providers": [
-      "wss://rpc.joyutils.org",
-      "wss://rpc.joystream.org"
+      "wss://rpc.joystream.org",
+      "wss://rpc.joyutils.org"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1440,8 +1363,8 @@
   {
     "name": "Liberland mainnet",
     "providers": [
-      "wss://liberland-rpc.n.dwellir.com",
-      "wss://mainnet.liberland.org"
+      "wss://mainnet.liberland.org",
+      "wss://liberland-rpc.n.dwellir.com"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1450,14 +1373,6 @@
     "name": "Liberland testnet",
     "providers": [
       "wss://testchain.liberland.org"
-    ],
-    "isRelay": false,
-    "supportsContracts": false
-  },
-  {
-    "name": "Logion Testnet",
-    "providers": [
-      "wss://test-para-rpc01.logion.network"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1473,11 +1388,11 @@
   {
     "name": "Moonbase Alpha",
     "providers": [
-      "wss://moonbase-rpc.n.dwellir.com",
       "wss://wss.api.moonbase.moonbeam.network",
+      "wss://moonbase-rpc.n.dwellir.com",
       "wss://moonbeam-alpha.api.onfinality.io/public-ws",
-      "wss://moonbase.public.curie.radiumblock.co/ws",
-      "wss://moonbase.unitedbloc.com"
+      "wss://moonbase.unitedbloc.com",
+      "wss://moonbase.public.curie.radiumblock.co/ws"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1534,8 +1449,8 @@
   {
     "name": "Shibuya",
     "providers": [
-      "wss://rpc.shibuya.astar.network",
-      "wss://shibuya-rpc.n.dwellir.com"
+      "wss://shibuya-rpc.n.dwellir.com",
+      "wss://rpc.shibuya.astar.network"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1543,10 +1458,10 @@
   {
     "name": "SORA",
     "providers": [
-      "wss://sora.api.onfinality.io/public-ws",
+      "wss://mof3.sora.org",
       "wss://ws.mof.sora.org",
-      "wss://mof2.sora.org",
-      "wss://mof3.sora.org"
+      "wss://sora.api.onfinality.io/public-ws",
+      "wss://mof2.sora.org"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1554,8 +1469,8 @@
   {
     "name": "SORA-staging",
     "providers": [
-      "wss://ws.framenode-7.s4.stg1.sora2.soramitsu.co.jp",
-      "wss://ws.framenode-8.s5.stg1.sora2.soramitsu.co.jp"
+      "wss://ws.framenode-8.s5.stg1.sora2.soramitsu.co.jp",
+      "wss://ws.framenode-7.s4.stg1.sora2.soramitsu.co.jp"
     ],
     "isRelay": false,
     "supportsContracts": false

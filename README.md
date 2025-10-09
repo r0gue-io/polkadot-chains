@@ -27,7 +27,7 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 - Filters entries and keeps only valid WebSocket URLs.
 - Excludes endpoints whose host is a raw numeric IP (e.g., wss://12.34.56.78), to prefer domain-based hosts.
 - Groups endpoints by network/relay and de-duplicates provider URLs for each entry.
-- Probes a subset of providers (batched) to check WebSocket health and inspects runtime metadata to flag feature support.
+- Probes a subset of providers (batched) to check WebSocket liveliness via a raw JSON-RPC call (system_health) without using polkadot-js.
 - Sorts the final list smartly:
   - Grouped by relay, with preferred relay order: Polkadot, Kusama, Paseo, Westend.
   - Other relay groups follow, ordered alphabetically by relay name.
@@ -43,7 +43,7 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 - `providers`: array of unique WebSocket endpoint URLs (string[]).
 - `isRelay`: boolean indicating whether the entry is a relay network.
 - `relay`: optional string name of the relay, when available.
-- `supportsContracts`: boolean set based on runtime metadata probing. Currently true when a pallet whose name includes "revive" is found; otherwise false.
+- `alive`: boolean set true when at least one provider for the entry responds to a JSON-RPC health check (system_health). 
 
 Example excerpt:
 
@@ -53,20 +53,20 @@ Example excerpt:
     "name": "Polkadot",
     "providers": ["wss://rpc.polkadot.io", "wss://polkadot.api.onfinality.io/public-ws"],
     "isRelay": true,
-    "supportsContracts": false
+    "alive": true
   },
   {
     "name": "Polkadot | Asset Hub",
     "providers": ["wss://polkadot-asset-hub-rpc.polkadot.io"],
     "isRelay": false,
     "relay": "Polkadot",
-    "supportsContracts": true
+    "alive": true
   },
   {
     "name": "Kusama",
     "providers": ["wss://kusama-rpc.polkadot.io"],
     "isRelay": true,
-    "supportsContracts": false
+    "alive": false
   }
 ]
 ```
@@ -76,9 +76,7 @@ Notes:
 - Invalid URLs (cannot be parsed) are ignored.
 - Providers hosted at a raw IP (matching `wss?:\/\/\d+`) are ignored.
 - Empty provider sets are discarded entirely.
-- Network probing is done in batches to avoid overwhelming endpoints (default batch size = 10). Each provider is first
-  tested for WebSocket connectivity before attempting to create an API instance.
-- The supportsContracts flag is experimental and derived from runtime metadata; adapt or rename as your needs evolve.
+- Network probing is done in batches to avoid overwhelming endpoints (default batch size = 10). Each entry is checked by opening a WebSocket and issuing a lightweight JSON-RPC call (system_health). No polkadot-js API is used for probing.
 
 ## Updating data
 
