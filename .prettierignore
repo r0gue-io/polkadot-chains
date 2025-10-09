@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+
+# Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build / coverage / caches
+build
+dist
+coverage
+.cache
+
+# Generated artifacts
+endpoints.json

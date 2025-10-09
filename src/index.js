@@ -1,9 +1,8 @@
-import {createWsEndpoints} from '@polkadot/apps-config'
-import {ApiPromise, WsProvider} from '@polkadot/api'
+import { createWsEndpoints } from '@polkadot/apps-config'
+import { ApiPromise, WsProvider } from '@polkadot/api'
 import * as fs from 'node:fs'
-import {URL} from 'node:url'
+import { URL } from 'node:url'
 import WebSocket from 'ws'
-
 
 async function testWebSocketConnection(url, timeoutMs = 5000) {
     return new Promise((resolve, reject) => {
@@ -19,7 +18,7 @@ async function testWebSocketConnection(url, timeoutMs = 5000) {
             resolve(true)
         })
 
-        socket.on('error', (err) => {
+        socket.on('error', err => {
             clearTimeout(timeout)
             reject(err)
         })
@@ -39,18 +38,17 @@ async function checkSupportsContracts(urls) {
             provider = new WsProvider(url, false)
             await provider.connect()
             await provider.isReady
-            api = await ApiPromise.create({provider})
+            api = await ApiPromise.create({ provider })
             await api.isReady
-            const pallets = api.runtimeMetadata.asLatest.pallets.map((p) => p.name.toString().toLowerCase())
-            const hasRevive = pallets.includes('revive') || pallets.some((n) => n.includes('revive'))
+            const pallets = api.runtimeMetadata.asLatest.pallets.map(p =>
+                p.name.toString().toLowerCase(),
+            )
+            const hasRevive = pallets.includes('revive') || pallets.some(n => n.includes('revive'))
             return !!hasRevive
         } catch (e) {
             console.error(`Failure checking ${url}: ${e.message}`)
         } finally {
-            await Promise.all([
-                api?.disconnect(),
-                provider?.disconnect(),
-            ])
+            await Promise.all([api?.disconnect(), provider?.disconnect()])
             console.log(`Disconnected from ${url}...`)
         }
     }
@@ -58,19 +56,76 @@ async function checkSupportsContracts(urls) {
     return false
 }
 
+function sortEndpoints(a, b) {
+    // Helper: lowercase safely
+    const lc = s => (s || '').toLowerCase()
+
+    // Determine relay group for an item
+    // - For parachains: use the 'relay' field
+    // - For relay chains: use their own name
+    // - For solochains: null (no group)
+    const groupOf = item => {
+        if (item.isRelay) return lc(item.name)
+        if (item.relay) return lc(item.relay)
+        return null
+    }
+
+    const aGroup = groupOf(a)
+    const bGroup = groupOf(b)
+
+    // Preferred relay groups order
+    const preferred = ['polkadot', 'kusama', 'paseo', 'westend']
+    const rankOf = g => {
+        const idx = preferred.indexOf(g || '')
+        return idx >= 0 ? idx : preferred.length // non-preferred relay groups after preferred
+    }
+
+    // 1) Relay-grouped items before solochains
+    const aHasGroup = !!aGroup
+    const bHasGroup = !!bGroup
+    if (aHasGroup !== bHasGroup) return aHasGroup ? -1 : 1
+
+    // If both are solochains, sort alphabetically by name and finish
+    if (!aHasGroup && !bHasGroup) {
+        return lc(a.name).localeCompare(lc(b.name))
+    }
+
+    // 2) Among grouped items, order by preferred relay group, then by relay name alphabetically for others
+    const aRank = rankOf(aGroup)
+    const bRank = rankOf(bGroup)
+    if (aRank !== bRank) return aRank - bRank
+    if (aRank === preferred.length) {
+        // both non-preferred: order by relay group name
+        const byGroupName = aGroup.localeCompare(bGroup)
+        if (byGroupName !== 0) return byGroupName
+    }
+
+    // 3) Within the same relay group, relay chain first, then parachains alphabetically by local name
+    if (a.isRelay !== b.isRelay) return a.isRelay ? -1 : 1
+
+    const localName = item => {
+        if (item.isRelay) return lc(item.name)
+        // Names are in format "Relay | Parachain"; we want the part after the delimiter
+        const parts = lc(item.name).split(' | ')
+        return parts[parts.length - 1]
+    }
+
+    return localName(a).localeCompare(localName(b))
+}
+
 async function main() {
     const result = {}
-    const rawEndpoints = createWsEndpoints().filter(({value}) => !!value)
+    const rawEndpoints = createWsEndpoints().filter(({ value }) => !!value)
 
-    rawEndpoints.forEach(({value, isRelay, textRelay, text}) => {
+    rawEndpoints.forEach(({ value, isRelay, textRelay, text }) => {
         let name = text
         if (!!textRelay) {
-            name = `${name} - ${textRelay}`
+            name = `${textRelay} | ${name}`
         }
         if (!result[name]) {
             result[name] = {
                 providers: new Set(),
-                isRelay: false
+                isRelay: false,
             }
         }
 
@@ -108,14 +163,21 @@ async function main() {
                         value.supportsContracts = false
                     }
                 }
-            })
+            }),
         )
     }
 
-    fs.writeFileSync('endpoints.json', JSON.stringify(result, null, 2))
+    const finalList = Object.entries(result)
+        .map(([key, value]) => ({
+            name: key,
+            ...value,
+        }))
+        .sort(sortEndpoints)
+
+    // Finally, write the final list into a file
+    fs.writeFileSync('endpoints.json', JSON.stringify(finalList, null, 2))
 }
 
-// Run
 try {
     await main()
 } catch (e) {
