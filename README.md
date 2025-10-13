@@ -27,7 +27,8 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 - Filters entries and keeps only valid WebSocket URLs.
 - Excludes endpoints whose host is a raw numeric IP (e.g., wss://12.34.56.78), to prefer domain-based hosts.
 - Groups endpoints by network/relay and de-duplicates provider URLs for each entry.
-- Probes a subset of providers (batched) to check WebSocket liveliness via a raw JSON-RPC call (system_health) without using polkadot-js.
+- Checks each provider for liveness (batched): performs a basic WS handshake and a lightweight JSON-RPC `system_health` call; only healthy providers are kept.
+- For each remaining entry, connects via @polkadot/api to read runtime metadata and sets `supportsContracts` to true when a pallet named (or containing) "revive" is present.
 - Sorts the final list smartly:
   - Grouped by relay, with preferred relay order: Polkadot, Kusama, Paseo, Westend.
   - Other relay groups follow, ordered alphabetically by relay name.
@@ -40,10 +41,10 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 `endpoints.json` is a JSON array. Each item has the following shape:
 
 - `name`: human-friendly name. For parachains, the format is typically "Relay | Parachain".
-- `providers`: array of unique WebSocket endpoint URLs (string[]).
+- `providers`: array of unique, healthy WebSocket endpoint URLs (string[]). Only endpoints that respond to a basic liveness check are included.
 - `isRelay`: boolean indicating whether the entry is a relay network.
 - `relay`: optional string name of the relay, when available.
-- `alive`: boolean set true when at least one provider for the entry responds to a JSON-RPC health check (system_health). 
+- `supportsContracts`: boolean set true when the chain's runtime contains a pallet whose name is or contains "revive" (derived via on-chain metadata).
 
 Example excerpt:
 
@@ -53,20 +54,20 @@ Example excerpt:
     "name": "Polkadot",
     "providers": ["wss://rpc.polkadot.io", "wss://polkadot.api.onfinality.io/public-ws"],
     "isRelay": true,
-    "alive": true
+    "supportsContracts": false
   },
   {
     "name": "Polkadot | Asset Hub",
     "providers": ["wss://polkadot-asset-hub-rpc.polkadot.io"],
     "isRelay": false,
     "relay": "Polkadot",
-    "alive": true
+    "supportsContracts": true
   },
   {
     "name": "Kusama",
     "providers": ["wss://kusama-rpc.polkadot.io"],
     "isRelay": true,
-    "alive": false
+    "supportsContracts": false
   }
 ]
 ```
@@ -75,8 +76,9 @@ Notes:
 
 - Invalid URLs (cannot be parsed) are ignored.
 - Providers hosted at a raw IP (matching `wss?:\/\/\d+`) are ignored.
-- Empty provider sets are discarded entirely.
-- Network probing is done in batches to avoid overwhelming endpoints (default batch size = 10). Each entry is checked by opening a WebSocket and issuing a lightweight JSON-RPC call (system_health). No polkadot-js API is used for probing.
+- Entries with no responding providers are omitted entirely.
+- Liveness is checked per provider using a basic WebSocket handshake followed by a lightweight JSON-RPC call (system_health), in batches (default batch size = 10).
+- The `supportsContracts` field is computed by connecting with @polkadot/api to read runtime metadata and checking pallet names for "revive".
 
 ## Updating data
 
