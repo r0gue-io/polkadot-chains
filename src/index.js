@@ -50,7 +50,7 @@ async function jsonRpcHealth(url, timeoutMs = 5000) {
             }
         })
 
-        socket.on('message', data => {
+        socket.on('message', () => {
             // Any JSON-RPC response counts as alive
             answered = true
             clearTimeout(timeout)
@@ -235,6 +235,10 @@ async function main() {
             ...value,
         }))
         .sort(sortEndpoints)
+        .map(obj => {
+            obj.providers.sort()
+            return obj
+        })
 
     // Finally, write the final list into a file
     fs.writeFileSync('endpoints.json', JSON.stringify(finalList, null, 2))

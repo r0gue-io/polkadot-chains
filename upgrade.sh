@@ -2,8 +2,8 @@
 
 set -ex
 
+yarn add @polkadot/apps-config@latest
 yarn install
-yarn upgrade @polkadot/apps-config
 
 # Check if there are any changes
 if ! git diff --quiet; then
