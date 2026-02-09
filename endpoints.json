@@ -1,11 +1,28 @@
 [
   {
+    "name": "Polkadot Relay",
+    "providers": [
+      "wss://dot-rpc.stakeworld.io",
+      "wss://polkadot-rpc.n.dwellir.com",
+      "wss://polkadot-rpc.publicnode.com",
+      "wss://polkadot.api.onfinality.io/public-ws",
+      "wss://polkadot.dotters.network",
+      "wss://polkadot.public.curie.radiumblock.co/ws",
+      "wss://polkadot.rpc.subquery.network/public/ws",
+      "wss://rpc-polkadot.helixstreet.io",
+      "wss://rpc-polkadot.luckyfriday.io",
+      "wss://rpc.ibp.network/polkadot",
+      "wss://spectrum-03.simplystaking.xyz/cG9sa2Fkb3QtMDMtOTFkMmYwZGYtcG9sa2Fkb3Q/LjwBJpV3dIKyWQ/polkadot/mainnet/"
+    ],
+    "isRelay": true,
+    "supportsContracts": false
+  },
+  {
     "name": "Polkadot Relay | Acala",
     "providers": [
       "wss://acala-rpc-0.aca-api.network",
       "wss://acala-rpc-1.aca-api.network",
       "wss://acala-rpc-3.aca-api.network/ws",
-      "wss://acala-rpc.n.dwellir.com",
       "wss://acala.dotters.network",
       "wss://acala.ibp.network"
     ],
@@ -57,7 +74,8 @@
     "providers": [
       "wss://bifrost-polkadot.dotters.network",
       "wss://bifrost-polkadot.ibp.network",
-      "wss://eu.bifrost-polkadot-rpc.liebi.com/ws"
+      "wss://eu.bifrost-polkadot-rpc.liebi.com/ws",
+      "wss://hk.p.bifrost-rpc.liebi.com/ws"
     ],
     "isRelay": false,
     "relay": "Polkadot Relay",
@@ -349,7 +367,6 @@
   {
     "name": "Polkadot Relay | Xcavate",
     "providers": [
-      "wss://xcavate.dotters.network",
       "wss://xcavate.ibp.network"
     ],
     "isRelay": false,
@@ -373,6 +390,22 @@
     ],
     "isRelay": false,
     "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Kusama Relay",
+    "providers": [
+      "wss://ksm-rpc.stakeworld.io",
+      "wss://kusama-rpc.n.dwellir.com",
+      "wss://kusama-rpc.publicnode.com",
+      "wss://kusama.api.onfinality.io/public-ws",
+      "wss://kusama.dotters.network",
+      "wss://kusama.public.curie.radiumblock.co/ws",
+      "wss://rpc-kusama.helixstreet.io",
+      "wss://rpc-kusama.luckyfriday.io",
+      "wss://rpc.ibp.network/kusama"
+    ],
+    "isRelay": true,
     "supportsContracts": false
   },
   {
@@ -815,6 +848,17 @@
     "supportsContracts": false
   },
   {
+    "name": "Westend Relay",
+    "providers": [
+      "wss://westend-rpc.n.dwellir.com",
+      "wss://westend-rpc.polkadot.io",
+      "wss://westend.api.onfinality.io/public-ws",
+      "wss://westend.public.curie.radiumblock.co/ws"
+    ],
+    "isRelay": true,
+    "supportsContracts": false
+  },
+  {
     "name": "Westend Relay | Asset Hub",
     "providers": [
       "wss://asset-hub-westend-rpc.n.dwellir.com",
@@ -1129,22 +1173,6 @@
     "supportsContracts": false
   },
   {
-    "name": "Kusama Relay",
-    "providers": [
-      "wss://ksm-rpc.stakeworld.io",
-      "wss://kusama-rpc.n.dwellir.com",
-      "wss://kusama-rpc.publicnode.com",
-      "wss://kusama.api.onfinality.io/public-ws",
-      "wss://kusama.dotters.network",
-      "wss://kusama.public.curie.radiumblock.co/ws",
-      "wss://rpc-kusama.helixstreet.io",
-      "wss://rpc-kusama.luckyfriday.io",
-      "wss://rpc.ibp.network/kusama"
-    ],
-    "isRelay": false,
-    "supportsContracts": false
-  },
-  {
     "name": "Liberland mainnet",
     "providers": [
       "wss://liberland-rpc.n.dwellir.com",
@@ -1191,24 +1219,6 @@
     "name": "Polkadex",
     "providers": [
       "wss://so.polkadex.ee"
-    ],
-    "isRelay": false,
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay",
-    "providers": [
-      "wss://dot-rpc.stakeworld.io",
-      "wss://polkadot-rpc.n.dwellir.com",
-      "wss://polkadot-rpc.publicnode.com",
-      "wss://polkadot.api.onfinality.io/public-ws",
-      "wss://polkadot.dotters.network",
-      "wss://polkadot.public.curie.radiumblock.co/ws",
-      "wss://polkadot.rpc.subquery.network/public/ws",
-      "wss://rpc-polkadot.helixstreet.io",
-      "wss://rpc-polkadot.luckyfriday.io",
-      "wss://rpc.ibp.network/polkadot",
-      "wss://spectrum-03.simplystaking.xyz/cG9sa2Fkb3QtMDMtOTFkMmYwZGYtcG9sa2Fkb3Q/LjwBJpV3dIKyWQ/polkadot/mainnet/"
     ],
     "isRelay": false,
     "supportsContracts": false
@@ -1315,17 +1325,6 @@
     "name": "VTB",
     "providers": [
       "wss://substratenode.vtbcfoundation.org/explorer"
-    ],
-    "isRelay": false,
-    "supportsContracts": false
-  },
-  {
-    "name": "Westend Relay",
-    "providers": [
-      "wss://westend-rpc.n.dwellir.com",
-      "wss://westend-rpc.polkadot.io",
-      "wss://westend.api.onfinality.io/public-ws",
-      "wss://westend.public.curie.radiumblock.co/ws"
     ],
     "isRelay": false,
     "supportsContracts": false
