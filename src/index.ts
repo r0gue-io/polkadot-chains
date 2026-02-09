@@ -4,9 +4,12 @@ import { checkSupportsContracts } from './metadata.js'
 import { sortEndpoints } from './sort.js'
 import { loadEndpoints } from './endpoints.js'
 import { header, success, fail, error, summary, bumpStat } from './log.js'
+import type { EndpointBuild, EndpointOutput } from './types.js'
+
+type EndpointResultMap = Record<string, EndpointBuild>
 
 async function main() {
-    const result = {}
+    const result: EndpointResultMap = {}
     const endpoints = loadEndpoints()
 
     header('Liveness checks')
@@ -16,7 +19,7 @@ async function main() {
         endpoints.map(async ({ name, url, isRelay, relay }) => {
             if (!result[name]) {
                 result[name] = {
-                    providers: new Set(),
+                    providers: new Set<string>(),
                     isRelay: false,
                 }
             }
@@ -49,18 +52,19 @@ async function main() {
         const batch = entries.slice(i, i + batchSize)
         await Promise.all(
             batch.map(async ([key, value]) => {
-                value.providers = [...value.providers]
-                if (value.providers.length === 0) {
+                const providers = [...value.providers]
+                if (providers.length === 0) {
                     delete result[key]
                 } else {
                     try {
-                        value.supportsContracts = await checkSupportsContracts(value.providers)
+                        value.supportsContracts = await checkSupportsContracts(providers)
                         if (value.supportsContracts) {
                             success(`${key}: contracts supported`)
                             bumpStat('contracts')
                         }
                     } catch (e) {
-                        error(`Error checking supportsContracts for ${key}: ${e.message}`)
+                        const message = e instanceof Error ? e.message : String(e)
+                        error(`Error checking supportsContracts for ${key}: ${message}`)
                         value.supportsContracts = false
                     }
                 }
@@ -68,10 +72,13 @@ async function main() {
         )
     }
 
-    const finalList = Object.entries(result)
+    const finalList: EndpointOutput[] = Object.entries(result)
         .map(([key, value]) => ({
             name: key,
-            ...value,
+            providers: [...value.providers],
+            isRelay: value.isRelay,
+            relay: value.relay,
+            supportsContracts: value.supportsContracts,
         }))
         .sort(sortEndpoints)
         .map(obj => {
@@ -88,6 +95,7 @@ async function main() {
 try {
     await main()
 } catch (e) {
-    error(`Failed to build endpoints: ${e.message}`)
+    const message = e instanceof Error ? e.message : String(e)
+    error(`Failed to build endpoints: ${message}`)
     process.exitCode = 1
 }

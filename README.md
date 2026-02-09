@@ -18,6 +18,7 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 
 - Generate the endpoints file:
     - bun run build
+    - bun run start
 - Output file:
     - endpoints.json (created/overwritten in the project root)
 
@@ -25,11 +26,11 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 
 | Module             | Responsibility                                                |
 | ------------------ | ------------------------------------------------------------- |
-| `src/index.js`     | Entry point — orchestration only                              |
-| `src/ws.js`        | WebSocket utilities: connectivity tests, raw JSON-RPC calls   |
-| `src/metadata.js`  | Contract detection via raw `state_getMetadata` + SCALE decode |
-| `src/sort.js`      | Endpoint sorting comparator                                   |
-| `src/endpoints.js` | Endpoint loading and filtering from `@polkadot/apps-config`   |
+| `src/index.ts`     | Entry point — orchestration only                              |
+| `src/ws.ts`        | WebSocket utilities: connectivity tests, raw JSON-RPC calls   |
+| `src/metadata.ts`  | Contract detection via raw `state_getMetadata` + SCALE decode |
+| `src/sort.ts`      | Endpoint sorting comparator                                   |
+| `src/endpoints.ts` | Endpoint loading and filtering from `@polkadot/apps-config`   |
 
 ## What the script does
 
@@ -112,9 +113,11 @@ You can also use the helper script if present:
 
 ## Scripts
 
-- bun run build — runs node src/index.js and writes endpoints.json
+- bun run build — compiles TypeScript
+- bun run start — runs the compiled script to write endpoints.json
 - bun run format — formats the repository with Prettier
 - bun run format:check — checks formatting without writing changes
+- bun run typecheck — runs TypeScript type checks without emitting
 
 ## License
 

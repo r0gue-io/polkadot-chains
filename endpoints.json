@@ -23,6 +23,7 @@
       "wss://acala-rpc-0.aca-api.network",
       "wss://acala-rpc-1.aca-api.network",
       "wss://acala-rpc-3.aca-api.network/ws",
+      "wss://acala-rpc.n.dwellir.com",
       "wss://acala.dotters.network",
       "wss://acala.ibp.network"
     ],
@@ -64,6 +65,15 @@
       "wss://astar.api.onfinality.io/public-ws",
       "wss://astar.public.curie.radiumblock.co/ws",
       "wss://rpc.astar.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Polkadot Relay | Aventus",
+    "providers": [
+      "wss://public-rpc.mainnet.aventus.io"
     ],
     "isRelay": false,
     "relay": "Polkadot Relay",
@@ -218,15 +228,6 @@
     "providers": [
       "wss://api.interlay.io/parachain",
       "wss://rpc-interlay.luckyfriday.io/"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot Relay | JAMTON",
-    "providers": [
-      "wss://rpc.jamton.network"
     ],
     "isRelay": false,
     "relay": "Polkadot Relay",
@@ -784,15 +785,6 @@
     "providers": [
       "wss://rpc1.paseo.mandalachain.io",
       "wss://rpc2.paseo.mandalachain.io"
-    ],
-    "isRelay": false,
-    "relay": "Paseo Relay",
-    "supportsContracts": false
-  },
-  {
-    "name": "Paseo Relay | Muse network",
-    "providers": [
-      "wss://paseo-muse-rpc.polkadot.io"
     ],
     "isRelay": false,
     "relay": "Paseo Relay",

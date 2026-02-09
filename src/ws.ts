@@ -1,13 +1,14 @@
-import WebSocket from 'ws'
+import WebSocket, { type RawData } from 'ws'
 import { progress, fail } from './log.js'
+
+const toErrorMessage = (e: unknown) => (e instanceof Error ? e.message : String(e))
 
 /**
  * Test basic WebSocket connectivity by opening and immediately closing.
- * @param {string} url - WebSocket URL to test.
- * @param {number} [timeoutMs=60000] - Connection timeout in milliseconds.
- * @returns {Promise<boolean>} Resolves `true` when the handshake succeeds.
+ * @param url - WebSocket URL to test.
+ * @param timeoutMs - Connection timeout in milliseconds.
  */
-export async function testWebSocketConnection(url, timeoutMs = 60000) {
+export async function testWebSocketConnection(url: string, timeoutMs = 60000): Promise<boolean> {
     return new Promise((resolve, reject) => {
         const socket = new WebSocket(url)
         const timeout = setTimeout(() => {
@@ -21,7 +22,7 @@ export async function testWebSocketConnection(url, timeoutMs = 60000) {
             resolve(true)
         })
 
-        socket.on('error', err => {
+        socket.on('error', (err: Error) => {
             clearTimeout(timeout)
             reject(err)
         })
@@ -30,11 +31,10 @@ export async function testWebSocketConnection(url, timeoutMs = 60000) {
 
 /**
  * Send a `system_health` JSON-RPC call and resolve when any response arrives.
- * @param {string} url - WebSocket URL.
- * @param {number} [timeoutMs=5000] - Timeout in milliseconds.
- * @returns {Promise<boolean>} Resolves `true` when the node responds.
+ * @param url - WebSocket URL.
+ * @param timeoutMs - Timeout in milliseconds.
  */
-export async function jsonRpcHealth(url, timeoutMs = 5000) {
+export async function jsonRpcHealth(url: string, timeoutMs = 5000): Promise<boolean> {
     return new Promise((resolve, reject) => {
         const socket = new WebSocket(url)
         const msg = JSON.stringify({ id: 1, jsonrpc: '2.0', method: 'system_health', params: [] })
@@ -44,7 +44,9 @@ export async function jsonRpcHealth(url, timeoutMs = 5000) {
             if (!answered) {
                 try {
                     socket.terminate()
-                } catch {}
+                } catch {
+                    // ignore
+                }
             }
             reject(new Error('JSON-RPC health timeout'))
         }, timeoutMs)
@@ -64,11 +66,13 @@ export async function jsonRpcHealth(url, timeoutMs = 5000) {
             clearTimeout(timeout)
             try {
                 socket.close()
-            } catch {}
+            } catch {
+                // ignore
+            }
             resolve(true)
         })
 
-        socket.on('error', err => {
+        socket.on('error', (err: Error) => {
             clearTimeout(timeout)
             reject(err)
         })
@@ -84,13 +88,17 @@ export async function jsonRpcHealth(url, timeoutMs = 5000) {
 
 /**
  * Execute a generic JSON-RPC call over a short-lived WebSocket connection.
- * @param {string} url - WebSocket URL.
- * @param {string} method - JSON-RPC method name.
- * @param {Array} [params=[]] - JSON-RPC params.
- * @param {number} [timeoutMs=30000] - Timeout in milliseconds.
- * @returns {Promise<any>} The `result` field from the JSON-RPC response.
+ * @param url - WebSocket URL.
+ * @param method - JSON-RPC method name.
+ * @param params - JSON-RPC params.
+ * @param timeoutMs - Timeout in milliseconds.
  */
-export async function jsonRpcCall(url, method, params = [], timeoutMs = 30000) {
+export async function jsonRpcCall(
+    url: string,
+    method: string,
+    params: unknown[] = [],
+    timeoutMs = 30000,
+): Promise<unknown> {
     return new Promise((resolve, reject) => {
         const socket = new WebSocket(url)
         const msg = JSON.stringify({ id: 1, jsonrpc: '2.0', method, params })
@@ -100,7 +108,9 @@ export async function jsonRpcCall(url, method, params = [], timeoutMs = 30000) {
             if (!answered) {
                 try {
                     socket.terminate()
-                } catch {}
+                } catch {
+                    // ignore
+                }
             }
             reject(new Error(`JSON-RPC ${method} timeout`))
         }, timeoutMs)
@@ -114,29 +124,31 @@ export async function jsonRpcCall(url, method, params = [], timeoutMs = 30000) {
             }
         })
 
-        socket.on('message', data => {
+        socket.on('message', (data: RawData) => {
             answered = true
             clearTimeout(timeout)
             try {
                 socket.close()
-            } catch {}
+            } catch {
+                // ignore
+            }
             try {
                 const parsed = JSON.parse(data.toString())
-                if (parsed.error) {
+                if (parsed?.error) {
                     reject(
                         new Error(
                             `JSON-RPC error: ${parsed.error.message || JSON.stringify(parsed.error)}`,
                         ),
                     )
                 } else {
-                    resolve(parsed.result)
+                    resolve(parsed?.result)
                 }
             } catch (e) {
                 reject(e)
             }
         })
 
-        socket.on('error', err => {
+        socket.on('error', (err: Error) => {
             clearTimeout(timeout)
             reject(err)
         })
@@ -153,11 +165,10 @@ export async function jsonRpcCall(url, method, params = [], timeoutMs = 30000) {
 /**
  * Compound liveness check: WS handshake + JSON-RPC system_health.
  * Retries up to {@link maxAttempts} times before giving up.
- * @param {string} url - WebSocket URL to check.
- * @param {number} [maxAttempts=3] - Total attempts before discarding.
- * @returns {Promise<boolean>} `true` when the endpoint is alive.
+ * @param url - WebSocket URL to check.
+ * @param maxAttempts - Total attempts before discarding.
  */
-export async function checkEndpointAlive(url, maxAttempts = 3) {
+export async function checkEndpointAlive(url: string, maxAttempts = 3): Promise<boolean> {
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
         try {
             progress(url, attempt, maxAttempts)
@@ -165,7 +176,7 @@ export async function checkEndpointAlive(url, maxAttempts = 3) {
             const ok = await jsonRpcHealth(url)
             if (ok) return true
         } catch (e) {
-            fail(`${url} (${attempt}/${maxAttempts}): ${e.message}`)
+            fail(`${url} (${attempt}/${maxAttempts}): ${toErrorMessage(e)}`)
         }
     }
     return false

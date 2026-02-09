@@ -1,32 +1,31 @@
 import { createWsEndpoints } from '@polkadot/apps-config'
 import { URL } from 'node:url'
 import { warn, bumpStat } from './log.js'
+import type { EndpointInput } from './types.js'
 
 /**
  * Load and filter WebSocket endpoints from `@polkadot/apps-config`.
  *
  * Keeps only valid `wss://` URLs whose host is not a raw numeric IP.
  * Returns an annotated array with network name, URL, relay info, etc.
- *
- * @returns {{ name: string, url: string, isRelay: boolean, relay?: string }[]}
  */
-export function loadEndpoints() {
+export function loadEndpoints(): EndpointInput[] {
     const raw = createWsEndpoints().filter(({ value }) => !!value)
 
     // First pass: collect names that any provider marks as relay.
     // expandEndpoint() only sets isRelay on the last provider, which may be
     // filtered out later (e.g. light-client URL), so we capture the flag early.
     // Use stringified text since it may not be a plain string.
-    const relayNames = new Set()
+    const relayNames = new Set<string>()
     for (const { isRelay, text } of raw) {
         if (isRelay) relayNames.add(String(text))
     }
 
-    const out = []
+    const out: EndpointInput[] = []
 
     for (const { value, textRelay, text } of raw) {
-        let name = text
-        if (!!textRelay) {
+        let name = String(text)
+        if (textRelay) {
             name = `${textRelay} | ${name}`
         }
 
@@ -42,8 +41,8 @@ export function loadEndpoints() {
             continue
         }
 
-        const entry = { name, url: value, isRelay: relayNames.has(String(text)) }
-        if (textRelay) entry.relay = textRelay
+        const entry: EndpointInput = { name, url: value, isRelay: relayNames.has(String(text)) }
+        if (textRelay) entry.relay = String(textRelay)
         out.push(entry)
     }
 

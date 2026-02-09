@@ -1,3 +1,5 @@
+import type { EndpointOutput } from './types.js'
+
 /**
  * Sort comparator for endpoint entries.
  *
@@ -8,17 +10,16 @@
  * 3. Within a relay group, the relay chain comes first, then parachains
  *    sorted alphabetically by name.
  * 4. Solochains sorted alphabetically.
- *
- * @param {{ name: string, isRelay: boolean, relay?: string }} a
- * @param {{ name: string, isRelay: boolean, relay?: string }} b
- * @returns {number}
  */
-export function sortEndpoints(a, b) {
+export function sortEndpoints(
+    a: Pick<EndpointOutput, 'name' | 'isRelay' | 'relay'>,
+    b: Pick<EndpointOutput, 'name' | 'isRelay' | 'relay'>,
+): number {
     // Helper: lowercase safely
-    const lc = s => (s || '').toLowerCase()
+    const lc = (s: string | undefined) => (s || '').toLowerCase()
 
     // Normalize relay group names, e.g. "Polkadot Relay" -> "polkadot"
-    const normalizeRelayName = s => {
+    const normalizeRelayName = (s: string | undefined) => {
         const x = lc(s).trim()
         // strip a trailing "relay" token
         return x.replace(/\s*relay\s*$/i, '').trim()
@@ -28,7 +29,7 @@ export function sortEndpoints(a, b) {
     // - For parachains: use the 'relay' field (normalized)
     // - For relay chains: use their own name (normalized)
     // - For solochains: null (no group)
-    const groupOf = item => {
+    const groupOf = (item: Pick<EndpointOutput, 'name' | 'isRelay' | 'relay'>) => {
         if (item.isRelay) return normalizeRelayName(item.name)
         if (item.relay) return normalizeRelayName(item.relay)
         return null
@@ -39,7 +40,7 @@ export function sortEndpoints(a, b) {
 
     // Preferred relay groups order (normalized values)
     const preferred = ['polkadot', 'kusama', 'paseo', 'westend']
-    const rankOf = g => {
+    const rankOf = (g: string | null) => {
         const idx = preferred.indexOf(g || '')
         return idx >= 0 ? idx : preferred.length // non-preferred relay groups after preferred
     }
@@ -60,7 +61,7 @@ export function sortEndpoints(a, b) {
     if (aRank !== bRank) return aRank - bRank
     if (aRank === preferred.length) {
         // both non-preferred: order by relay group name
-        const byGroupName = aGroup.localeCompare(bGroup)
+        const byGroupName = (aGroup || '').localeCompare(bGroup || '')
         if (byGroupName !== 0) return byGroupName
     }
 
