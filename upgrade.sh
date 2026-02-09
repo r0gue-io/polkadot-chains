@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 bun add @polkadot/apps-config@latest
 bun install
@@ -12,3 +12,5 @@ if ! git diff --quiet; then
 else
   echo "NO CHANGES"
 fi
+
+bun run build
