@@ -24,7 +24,7 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 ## Architecture
 
 | Module             | Responsibility                                                |
-|--------------------|---------------------------------------------------------------|
+| ------------------ | ------------------------------------------------------------- |
 | `src/index.js`     | Entry point — orchestration only                              |
 | `src/ws.js`        | WebSocket utilities: connectivity tests, raw JSON-RPC calls   |
 | `src/metadata.js`  | Contract detection via raw `state_getMetadata` + SCALE decode |
@@ -66,32 +66,25 @@ Example excerpt:
 
 ```json
 [
-  {
-    "name": "Polkadot",
-    "providers": [
-      "wss://rpc.polkadot.io",
-      "wss://polkadot.api.onfinality.io/public-ws"
-    ],
-    "isRelay": true,
-    "supportsContracts": false
-  },
-  {
-    "name": "Polkadot | Asset Hub",
-    "providers": [
-      "wss://polkadot-asset-hub-rpc.polkadot.io"
-    ],
-    "isRelay": false,
-    "relay": "Polkadot",
-    "supportsContracts": true
-  },
-  {
-    "name": "Kusama",
-    "providers": [
-      "wss://kusama-rpc.polkadot.io"
-    ],
-    "isRelay": true,
-    "supportsContracts": false
-  }
+    {
+        "name": "Polkadot",
+        "providers": ["wss://rpc.polkadot.io", "wss://polkadot.api.onfinality.io/public-ws"],
+        "isRelay": true,
+        "supportsContracts": false
+    },
+    {
+        "name": "Polkadot | Asset Hub",
+        "providers": ["wss://polkadot-asset-hub-rpc.polkadot.io"],
+        "isRelay": false,
+        "relay": "Polkadot",
+        "supportsContracts": true
+    },
+    {
+        "name": "Kusama",
+        "providers": ["wss://kusama-rpc.polkadot.io"],
+        "isRelay": true,
+        "supportsContracts": false
+    }
 ]
 ```
 
