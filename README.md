@@ -6,18 +6,18 @@ WebSocket endpoints from the `@polkadot/apps-config` package and generates a str
 ## Prerequisites
 
 - Node.js (LTS recommended)
-- Yarn (v1)
+- Bun
 
 ## Installation
 
 - Clone this repository
 - Install dependencies:
-    - yarn install
+    - bun install
 
 ## Usage
 
 - Generate the endpoints file:
-    - yarn run build
+    - bun run build
 - Output file:
     - endpoints.json (created/overwritten in the project root)
 
@@ -103,8 +103,8 @@ Notes:
 This project sources endpoints from the `@polkadot/apps-config` NPM package. To refresh the list, update the dependency
 and rebuild:
 
-- yarn upgrade @polkadot/apps-config
-- yarn run build
+- bun update @polkadot/apps-config
+- bun run build
 
 You can also use the helper script if present:
 
@@ -112,9 +112,9 @@ You can also use the helper script if present:
 
 ## Scripts
 
-- yarn build — runs node src/index.js and writes endpoints.json
-- yarn format — formats the repository with Prettier
-- yarn format:check — checks formatting without writing changes
+- bun run build — runs node src/index.js and writes endpoints.json
+- bun run format — formats the repository with Prettier
+- bun run format:check — checks formatting without writing changes
 
 ## License
 
