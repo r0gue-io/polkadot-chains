@@ -1,6 +1,5 @@
-import { createWsEndpoints } from '@polkadot/apps-config'
 import { URL } from 'node:url'
-import { warn, bumpStat } from './log.js'
+import { warn } from './log.js'
 import type { EndpointInput } from './types.js'
 
 /**
@@ -9,7 +8,13 @@ import type { EndpointInput } from './types.js'
  * Keeps only valid `wss://` URLs whose host is not a raw numeric IP.
  * Returns an annotated array with network name, URL, relay info, etc.
  */
-export function loadEndpoints(): EndpointInput[] {
+export async function loadEndpoints(): Promise<{ endpoints: EndpointInput[]; skipped: number }> {
+    // Dynamic import so we can suppress noisy @polkadot duplicate-version warnings
+    const origWarn = console.warn
+    console.warn = () => {}
+    const { createWsEndpoints } = await import('@polkadot/apps-config')
+    console.warn = origWarn
+
     const raw = createWsEndpoints().filter(({ value }) => !!value)
 
     // First pass: collect names that any provider marks as relay.
@@ -22,6 +27,7 @@ export function loadEndpoints(): EndpointInput[] {
     }
 
     const out: EndpointInput[] = []
+    let skipped = 0
 
     for (const { value, textRelay, text } of raw) {
         let name = String(text)
@@ -33,7 +39,7 @@ export function loadEndpoints(): EndpointInput[] {
             new URL(value)
         } catch {
             warn(`Invalid URL: ${value}`)
-            bumpStat('skipped')
+            skipped++
             continue
         }
 
@@ -46,5 +52,5 @@ export function loadEndpoints(): EndpointInput[] {
         out.push(entry)
     }
 
-    return out
+    return { endpoints: out, skipped }
 }

@@ -1,14 +1,11 @@
 import WebSocket, { type RawData } from 'ws'
-import { progress, fail } from './log.js'
-
-const toErrorMessage = (e: unknown) => (e instanceof Error ? e.message : String(e))
 
 /**
  * Test basic WebSocket connectivity by opening and immediately closing.
  * @param url - WebSocket URL to test.
  * @param timeoutMs - Connection timeout in milliseconds.
  */
-export async function testWebSocketConnection(url: string, timeoutMs = 60000): Promise<boolean> {
+export async function testWebSocketConnection(url: string, timeoutMs = 10000): Promise<boolean> {
     return new Promise((resolve, reject) => {
         const socket = new WebSocket(url)
         const timeout = setTimeout(() => {
@@ -34,7 +31,7 @@ export async function testWebSocketConnection(url: string, timeoutMs = 60000): P
  * @param url - WebSocket URL.
  * @param timeoutMs - Timeout in milliseconds.
  */
-export async function jsonRpcHealth(url: string, timeoutMs = 5000): Promise<boolean> {
+export async function jsonRpcHealth(url: string, timeoutMs = 10000): Promise<boolean> {
     return new Promise((resolve, reject) => {
         const socket = new WebSocket(url)
         const msg = JSON.stringify({ id: 1, jsonrpc: '2.0', method: 'system_health', params: [] })
@@ -97,7 +94,7 @@ export async function jsonRpcCall(
     url: string,
     method: string,
     params: unknown[] = [],
-    timeoutMs = 30000,
+    timeoutMs = 10000,
 ): Promise<unknown> {
     return new Promise((resolve, reject) => {
         const socket = new WebSocket(url)
@@ -171,12 +168,11 @@ export async function jsonRpcCall(
 export async function checkEndpointAlive(url: string, maxAttempts = 3): Promise<boolean> {
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
         try {
-            progress(url, attempt, maxAttempts)
             await testWebSocketConnection(url)
             const ok = await jsonRpcHealth(url)
             if (ok) return true
-        } catch (e) {
-            fail(`${url} (${attempt}/${maxAttempts}): ${toErrorMessage(e)}`)
+        } catch {
+            // Silently retry — results are reported in the grouped summary
         }
     }
     return false

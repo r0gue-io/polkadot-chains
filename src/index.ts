@@ -3,92 +3,116 @@ import { checkEndpointAlive } from './ws.js'
 import { checkSupportsContracts } from './metadata.js'
 import { sortEndpoints } from './sort.js'
 import { loadEndpoints } from './endpoints.js'
-import { header, success, fail, error, summary, bumpStat } from './log.js'
-import type { EndpointBuild, EndpointOutput } from './types.js'
+import {
+    createProgress,
+    printLivenessReport,
+    printContractsReport,
+    printSummary,
+    error,
+} from './log.js'
+import type { ChainReport } from './log.js'
+import type { EndpointOutput } from './types.js'
 
-type EndpointResultMap = Record<string, EndpointBuild>
+type ChainData = {
+    isRelay: boolean
+    relay?: string
+    total: number
+    alive: string[]
+    supportsContracts: boolean
+}
 
 async function main() {
-    const result: EndpointResultMap = {}
-    const endpoints = loadEndpoints()
+    const { endpoints, skipped } = await loadEndpoints()
 
-    header('Liveness checks')
+    // Build per-chain map
+    const chains: Record<string, ChainData> = {}
+    for (const ep of endpoints) {
+        if (!chains[ep.name]) {
+            chains[ep.name] = {
+                isRelay: ep.isRelay,
+                relay: ep.relay,
+                total: 0,
+                alive: [],
+                supportsContracts: false,
+            }
+        }
+        chains[ep.name].total++
+        if (ep.isRelay) chains[ep.name].isRelay = true
+        if (ep.relay) chains[ep.name].relay = ep.relay
+    }
 
-    // Check liveness for every endpoint URL in parallel
+    // ── Liveness checks ────────────────────────────────────────────────
+    const liveProgress = createProgress('Checking liveness', endpoints.length)
     await Promise.all(
-        endpoints.map(async ({ name, url, isRelay, relay }) => {
-            if (!result[name]) {
-                result[name] = {
-                    providers: new Set<string>(),
-                    isRelay: false,
-                }
-            }
-
+        endpoints.map(async ({ name, url }) => {
             const alive = await checkEndpointAlive(url)
-            if (alive) {
-                success(`${name} \u2014 ${url}`)
-                bumpStat('alive')
-                result[name].providers.add(url)
-            } else {
-                fail(`${name} \u2014 ${url}`)
-                bumpStat('dead')
-            }
-
-            if (isRelay) {
-                result[name].isRelay = true
-            }
-            if (relay) {
-                result[name].relay = relay
-            }
+            if (alive) chains[name].alive.push(url)
+            liveProgress.tick()
         }),
     )
+    liveProgress.done()
 
-    header('Metadata checks')
+    // Display grouped liveness report
+    const reports: ChainReport[] = Object.entries(chains).map(([name, data]) => ({
+        name,
+        isRelay: data.isRelay,
+        relay: data.relay,
+        alive: data.alive.length,
+        total: data.total,
+    }))
+    printLivenessReport(reports)
 
-    // Finalize providers arrays and check metadata for each entry (batched)
-    const entries = Object.entries(result)
+    // ── Metadata checks (alive chains only) ────────────────────────────
+    const aliveChains = Object.entries(chains).filter(([, data]) => data.alive.length > 0)
+    const metaProgress = createProgress('Checking metadata', aliveChains.length)
+    const contractNames: string[] = []
+
     const batchSize = 10
-    for (let i = 0; i < entries.length; i += batchSize) {
-        const batch = entries.slice(i, i + batchSize)
+    for (let i = 0; i < aliveChains.length; i += batchSize) {
+        const batch = aliveChains.slice(i, i + batchSize)
         await Promise.all(
-            batch.map(async ([key, value]) => {
-                const providers = [...value.providers]
-                if (providers.length === 0) {
-                    delete result[key]
-                } else {
-                    try {
-                        value.supportsContracts = await checkSupportsContracts(providers)
-                        if (value.supportsContracts) {
-                            success(`${key}: contracts supported`)
-                            bumpStat('contracts')
-                        }
-                    } catch (e) {
-                        const message = e instanceof Error ? e.message : String(e)
-                        error(`Error checking supportsContracts for ${key}: ${message}`)
-                        value.supportsContracts = false
-                    }
+            batch.map(async ([name, data]) => {
+                try {
+                    data.supportsContracts = await checkSupportsContracts(data.alive)
+                    if (data.supportsContracts) contractNames.push(name)
+                } catch {
+                    data.supportsContracts = false
                 }
+                metaProgress.tick()
             }),
         )
     }
+    metaProgress.done()
 
-    const finalList: EndpointOutput[] = Object.entries(result)
-        .map(([key, value]) => ({
-            name: key,
-            providers: [...value.providers],
-            isRelay: value.isRelay,
-            relay: value.relay,
-            supportsContracts: value.supportsContracts,
+    printContractsReport(contractNames)
+
+    // ── Summary ────────────────────────────────────────────────────────
+    let totalAlive = 0
+    let totalDead = 0
+    for (const data of Object.values(chains)) {
+        totalAlive += data.alive.length
+        totalDead += data.total - data.alive.length
+    }
+
+    printSummary({
+        chains: aliveChains.length,
+        alive: totalAlive,
+        dead: totalDead,
+        contracts: contractNames.length,
+        skipped,
+    })
+
+    // ── Write output ───────────────────────────────────────────────────
+    const finalList: EndpointOutput[] = aliveChains
+        .map(([name, data]) => ({
+            name,
+            providers: data.alive.sort(),
+            isRelay: data.isRelay,
+            relay: data.relay,
+            supportsContracts: data.supportsContracts,
         }))
         .sort(sortEndpoints)
-        .map(obj => {
-            obj.providers.sort()
-            return obj
-        })
 
-    summary()
-
-    // Finally, write the final list into a file
     fs.writeFileSync('endpoints.json', JSON.stringify(finalList, null, 2))
 }
 

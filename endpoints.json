@@ -23,7 +23,6 @@
       "wss://acala-rpc-0.aca-api.network",
       "wss://acala-rpc-1.aca-api.network",
       "wss://acala-rpc-3.aca-api.network/ws",
-      "wss://acala-rpc.n.dwellir.com",
       "wss://acala.dotters.network",
       "wss://acala.ibp.network"
     ],
@@ -234,6 +233,15 @@
     "supportsContracts": false
   },
   {
+    "name": "Polkadot Relay | JAMTON",
+    "providers": [
+      "wss://rpc.jamton.network"
+    ],
+    "isRelay": false,
+    "relay": "Polkadot Relay",
+    "supportsContracts": false
+  },
+  {
     "name": "Polkadot Relay | KILT Spiritnet",
     "providers": [
       "wss://kilt.dotters.network",
@@ -319,7 +327,6 @@
       "wss://people-polkadot-rpc.n.dwellir.com",
       "wss://people-polkadot.api.onfinality.io/public-ws",
       "wss://people-polkadot.dotters.network",
-      "wss://polkadot-people-rpc.polkadot.io",
       "wss://rpc-people-polkadot.luckyfriday.io",
       "wss://sys.ibp.network/people-polkadot"
     ],
@@ -889,15 +896,6 @@
     "isRelay": false,
     "relay": "Westend Relay",
     "supportsContracts": false
-  },
-  {
-    "name": "Westend Relay | Penpal",
-    "providers": [
-      "wss://westend-penpal-rpc.polkadot.io"
-    ],
-    "isRelay": false,
-    "relay": "Westend Relay",
-    "supportsContracts": true
   },
   {
     "name": "Westend Relay | People",
