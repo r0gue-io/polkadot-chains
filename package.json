@@ -14,7 +14,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@polkadot/apps-config": "^0.169.1",
+        "@polkadot/apps-config": "^0.171.1",
         "@polkadot/types": "^16.4.8",
         "ws": "^8.18.3"
     },
