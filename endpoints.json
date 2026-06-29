@@ -140,5 +140,58 @@
     "isRelay": false,
     "relay": "Kusama Relay",
     "supportsContracts": false
+  },
+  {
+    "name": "Paseo Relay",
+    "providers": [
+      "wss://api2.zondax.ch/pas/relay/node/rpc"
+    ],
+    "isRelay": true,
+    "supportsContracts": false
+  },
+  {
+    "name": "Paseo Relay | Asset Hub",
+    "providers": [
+      "wss://api2.zondax.ch/pas/assethub/node/rpc"
+    ],
+    "isRelay": false,
+    "relay": "Paseo Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Paseo Relay | Bridge Hub",
+    "providers": [
+      "wss://api2.zondax.ch/pas/bridgehub/node/rpc"
+    ],
+    "isRelay": false,
+    "relay": "Paseo Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Paseo Relay | Collectives",
+    "providers": [
+      "wss://api2.zondax.ch/pas/collectives/node/rpc"
+    ],
+    "isRelay": false,
+    "relay": "Paseo Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Paseo Relay | Coretime",
+    "providers": [
+      "wss://api2.zondax.ch/pas/coretime/node/rpc"
+    ],
+    "isRelay": false,
+    "relay": "Paseo Relay",
+    "supportsContracts": false
+  },
+  {
+    "name": "Paseo Relay | People",
+    "providers": [
+      "wss://api2.zondax.ch/pas/people/node/rpc"
+    ],
+    "isRelay": false,
+    "relay": "Paseo Relay",
+    "supportsContracts": false
   }
 ]
