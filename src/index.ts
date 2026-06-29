@@ -42,14 +42,21 @@ async function main() {
     }
 
     // ── Liveness checks ────────────────────────────────────────────────
+    // Checked in batches: firing every endpoint at once opens hundreds of
+    // simultaneous WebSocket handshakes, which overwhelms local connection
+    // limits and makes healthy endpoints time out (reporting them as dead).
     const liveProgress = createProgress('Checking liveness', endpoints.length)
-    await Promise.all(
-        endpoints.map(async ({ name, url }) => {
-            const alive = await checkEndpointAlive(url)
-            if (alive) chains[name].alive.push(url)
-            liveProgress.tick()
-        }),
-    )
+    const livenessBatchSize = 10
+    for (let i = 0; i < endpoints.length; i += livenessBatchSize) {
+        const batch = endpoints.slice(i, i + livenessBatchSize)
+        await Promise.all(
+            batch.map(async ({ name, url }) => {
+                const alive = await checkEndpointAlive(url)
+                if (alive) chains[name].alive.push(url)
+                liveProgress.tick()
+            }),
+        )
+    }
     liveProgress.done()
 
     // Display grouped liveness report
